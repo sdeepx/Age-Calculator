@@ -23,8 +23,8 @@ else {
             $table = "CREATE TABLE DOB(
                 id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
                 dev_IP VARCHAR(200),
-                birth_date VARCHAR(10),
                 birth_month VARCHAR(10),
+                birth_date VARCHAR(10),
                 birth_year VARCHAR(10),
                 
                 reg_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
