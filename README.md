@@ -1,2 +1,2 @@
-# Age-Calculator
-Age calculator using php.
+<center> # Age-Calculator </center>
+<hr>
