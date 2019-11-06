@@ -66,6 +66,9 @@ $ip = getIp();
 ?>
 
 <?php
+ 
+        //please check date and month.
+        
 $dderr=$mmerr=$yyerr= "";
 $age = "";
 $err = false;
@@ -75,13 +78,13 @@ if (isset($_POST["check"])) {
     $mm = $_POST["mm"];
     $yy = $_POST["yy"];
 
-    if ($dd == "Date") {
+    if ($dd == "Month") {
      $err = true;
-     $dderr = "<i>[-] please select your birth date. </i>";
+     $dderr = "<i>[-] please select your birth month. </i>";
     }
-    if ($mm == "Month") {
+    if ($mm == "Date") {
       $err = true;
-      $mmerr = "<i>[-] please select your birth Month. </i>";
+      $mmerr = "<i>[-] please select your birth date. </i>";
     }
     if ($yy == "Year") {
       $err = true;
@@ -96,12 +99,6 @@ if (isset($_POST["check"])) {
 
     $today = strtotime("today");
 
-    if (sizeof($dob_arr) !=3) {
-        $err = true;
-        die("PLease enter your date of birth currectly");
-    } else if (!checkdate($dob_arr[0], $dob_arr[1], $dob_arr[2])) {
-        # code...
-    }
 
     $agedays = floor(($today - $dobT) / 86400);
     $ageyear = floor($agedays / 365);
@@ -119,7 +116,7 @@ if (isset($_POST["check"])) {
     </div>
       ";
 
-      $sql = "INSERT INTO DOB(dev_IP, birth_date, birth_month, birth_year)
+      $sql = "INSERT INTO DOB(dev_IP, birth_month, birth_date, birth_year)
       VALUES('$ip','$dd', '$mm', '$yy')
       ";
       if ($conn->query($sql) === FALSE) {
@@ -144,7 +141,7 @@ if (isset($_POST["check"])) {
 
   <div class="col col-md-4 col-sm-4 col-lg-4 col-xs-4">
   <select class="form-control" id="sel1" name="dd">
-  <option value="Date">Date</option>
+  <option value="Month">Month</option>
 
     <?php
     for ($i=1; $i <= 12 ; $i++) { 
@@ -157,7 +154,7 @@ if (isset($_POST["check"])) {
 
   <div class="col col-md-4 col-sm-4 col-lg-4 col-xs-4">
   <select class="form-control" id="sel1" name="mm">
-  <option value="Month">Month</option>
+  <option value="Date">Date</option>
 
     <?php
     for ($i=1; $i <= 31 ; $i++) { 
